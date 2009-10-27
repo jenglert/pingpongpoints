@@ -1,0 +1,30 @@
+<div class="newMatch">
+	<%= error_messages_for :match %>
+	<% form_for @match do |f| %>
+		<%= f.hidden_field :home %>
+		
+		<div class="opponent">
+			Opponent: <%= f.select :away, other_users(current_user).collect { |u| ["#{u.login} (#{u.email})", u.id] } %>
+		</div>
+		
+		<table class="scores">
+			<tr>
+				<td>
+					Your Score
+				</td>
+				<td>
+					Their Score
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.text_field :home_score %>
+				</td>
+				<td>
+					<%= f.text_field :away_score %>
+				</td>
+			</tr>
+		</table>
+		<%= submit_tag "Record Match", :confirm => "Please be sure to check the match entry for accuracy.", :class => "recordMatch" %>
+	<% end%>
+</div>

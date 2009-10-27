@@ -1,0 +1,8 @@
+<div class="showMatch">
+	On <%= @match.created_at.pretty %>, 
+	<span class="winnerName"><%= @match.winner.login %></span> 
+	<span class="defeatedSynonym"><%= defeated_synonym %></span>
+	<span class="loserName"><%= @match.loser.login %></span>.  
+	The final score was 
+	<span class="winnerScore"><%= @match.winner.score.to_s %></span> - <span class="loserScore"><%= @match.loser.score.to_s %></span>.
+</div>

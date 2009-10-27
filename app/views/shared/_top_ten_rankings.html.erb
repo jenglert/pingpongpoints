@@ -1,0 +1,10 @@
+<div class="topTenRankings">
+	<h2>Top Ten Rankings</h2>
+	<table>
+		<% for user in top_ten_users %>
+			<tr>
+				<td><%= user.id %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

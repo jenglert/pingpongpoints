@@ -1,0 +1,17 @@
+<div class="matchList">
+	<table>
+		<% for match in @matches do %>
+			<tr>
+				<td>
+					<%= link_to match.id, match %>
+				</td>
+				<td>
+					<%= match.winner.login%>
+				</td>
+				<td>
+					<%= match.loser.login%>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

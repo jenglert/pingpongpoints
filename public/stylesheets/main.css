@@ -1,0 +1,49 @@
+/* PonG Ratings Stylesheet */
+*                    { padding: 0px; margin: 0px; font: arial; color: #03F; font-size: 14pt;  }
+INPUT[type=text],  
+INPUT[type=password],
+SELECT
+                     { font-size: 20pt; }
+SELECT               { height: 44px; width: 500px;}
+BODY                 { background-color: #CCF;      }
+H1                   { color: #3B6; font-size: 40pt; }
+.clearBoth           { clear: both; }
+
+/* Error Styling */
+.errorExplanation    { border: 4px red solid; background-color: #F66; margin: 0px 25px; padding: 5px 0 0 10px;}
+.errorExplanation UL { padding-left: 30px; }
+
+/* General Layout */
+.contentContainer    { margin: 20px;}
+.contentTop          { background: url("/images/background-top.png") #CCF 0% 0% no-repeat scroll;  
+                       height: 30px; width: 800px;  }
+.content             { background-color: #EEF; width: 740px; padding: 0px 30px 10px 30px;        }
+.contentBottom       { background: url("/images/background-bottom.png") #CCF 0% 0% no-repeat scroll; 
+                       height: 30px; width: 800px; }
+
+.siteName            { float: left; padding-bottom: 15px; }
+.loginWidget         { float: right; padding-top: 10px;}
+.loginWidget INPUT   { width: 60px;}
+.welcomeText         { float: right; padding-top: 10px; font-size: 19px; font-weight: bold;}
+IFRAME.ad            { margin-left: 58px;}
+
+/* Flash Error Messages */
+.flashes             { padding: 5px 5px 15px 5px; margin: 5px; border: 1px solid blue; width: 600px;}
+.flashes .error      { color: red; }
+
+.newMatch                 {}
+.newMatch DIV             { padding-bottom: 10px; }
+.newMatch .scores         { padding-bottom: 10px; }
+.newMatch .scores TD      { width: 100px; text-align: center; }
+.newMatch .scores INPUT   { width: 50px; }
+.newMatch .recordMatch    { font-size: 20pt; margin-left: 200px; margin-top: 20px;}
+
+.loginHeader .login    { font-size: 14pt; }
+.loginHeader .password { font-size: 14pt; }
+.loginHeader .logIn    { width: 80px;}
+
+.showMatch .winnerName  { font-weight: bold; font-size: 40pt; color: green; }
+.showMatch .loserName   { font-weight: bold; font-size: 20pt; color: red; }
+.showMatch .winnerScore { color: green; font-size: 25px; }
+.showMatch .loserScore  { color: red; font-size: 25px; }
+.showMatch .defeatedSynonym { font-size: 32px; }
