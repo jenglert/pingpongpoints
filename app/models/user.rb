@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)
     u = find :first, :conditions => ['login = ? or email = ?', login, login]
     
-    if !u.active?
+    if u && !u.active?
       u.errors.add_to_base "Please activate your account with the email you have recieved."
       return u
     end
