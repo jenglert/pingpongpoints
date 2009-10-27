@@ -4,11 +4,11 @@
 	<%= stylesheet_link_tag 'main'%>
 </head>
 <body>
-	<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>
+	<!--<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>-->
 	<div class="contentContainer">
 		<div class="contentTop" ></div>
 		<div class="content">
-			<h1 class="siteName">Ping Pong Points<%= rand(5).times.collect { |e| '!' }.join %></h1>
+			<h1 class="siteName">Ping Pong Points<%= '!!!' %></h1>
 			<% if !logged_in?%>
 				<span class="loginHeader">
 					<% form_tag session_path, :class => 'loginWidget' do -%>
@@ -35,6 +35,6 @@
 		</div>
 		<div class="contentBottom" ></div>
 	</div>
-	<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>
+	<!--<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>-->
 </body>
 </html>
