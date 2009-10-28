@@ -3,7 +3,8 @@
 	<table>
 		<% for user in top_ten_users %>
 			<tr>
-				<td><%= user.id %></td>
+				<td><%= user.login %></td>
+				<td><%= user.ranking%></td>
 			</tr>
 		<% end %>
 	</table>
