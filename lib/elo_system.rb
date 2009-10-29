@@ -15,10 +15,6 @@ module EloSystem
       # that the higher rated player will win, likely by a major victory margin.
       expected_score = 2.0 * (chance_higher_rated_player_will_win) + 0.5
       
-      puts match.rating_difference
-      puts "chance_higher_rated_player_will_win:" + chance_higher_rated_player_will_win.to_s
-      puts "expected_score" + expected_score.to_s
-      
       lrp = match.lower_rated_participant
       lrp.rating =  match.lower_rated_participant.rating + K * (match.lower_rated_participant_adj_score - expected_score)
       lrp.save!
