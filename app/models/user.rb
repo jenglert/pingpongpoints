@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation
 
+  def wins
+    Match.find(:all, :conditions => ['home = ? or away = ?', self.id, self.id]).reject { |m| m.winner.id != self.id }.length
+  end
+  
+  def losses
+    Match.find(:all, :conditions => ['home = ? or away = ?', self.id, self.id]).reject { |m| m.winner.id == self.id }.length
+  end
+
   # Activates the user in the database.
   def activate
     @activated = true

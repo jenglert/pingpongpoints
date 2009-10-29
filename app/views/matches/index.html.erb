@@ -1,15 +1,27 @@
 <div class="matchList">
+	<h2>Matches</h2>
 	<table>
+		<tr>
+			<th>
+				Winner
+			</th>
+			<th>
+				Loser
+			</th>
+			<th>
+				Score
+			</th>
+		</tr>
 		<% for match in @matches do %>
 			<tr>
-				<td>
-					<%= link_to match.id, match %>
-				</td>
 				<td>
 					<%= match.winner.login%>
 				</td>
 				<td>
 					<%= match.loser.login%>
+				</td>
+				<td>
+					<%= match.winner.score %> - <%= match.loser.score %>
 				</td>
 			</tr>
 		<% end %>

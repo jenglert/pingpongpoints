@@ -1,5 +1,5 @@
 /* PonG Ratings Stylesheet */
-*                    { padding: 0px; margin: 0px; font: arial; color: #03F; font-size: 14pt;  }
+*                    { padding: 0px; margin: 0px; font-family: arial; color: #03F; font-size: 14pt;  }
 INPUT[type=text],  
 INPUT[type=password],
 SELECT
@@ -7,6 +7,9 @@ SELECT
 SELECT               { height: 44px; width: 500px;}
 BODY                 { background-color: #CCF;      }
 H1                   { color: #3B6; font-size: 40pt; }
+H2                   { color: #EE5; font-size: 30pt;}
+A, A:visited,
+A:hover, A:active    { text-decoration: none; outline: none; }
 .clearBoth           { clear: both; }
 
 /* Error Styling */
@@ -17,9 +20,15 @@ H1                   { color: #3B6; font-size: 40pt; }
 .contentContainer    { margin: 20px;}
 .contentTop          { background: url("/images/background-top.png") #CCF 0% 0% no-repeat scroll;  
                        height: 30px; width: 800px;  }
-.content             { background-color: #EEF; width: 740px; padding: 0px 30px 10px 30px;        }
+.content             { background-color: #EEF; width: 800px; padding-bottom: 10px;                   }
+.content .innerContent { padding: 0px 30px 0 30px;                                                   }
 .contentBottom       { background: url("/images/background-bottom.png") #CCF 0% 0% no-repeat scroll; 
                        height: 30px; width: 800px; }
+.navigation          { height: 45px; background-color: blue; }
+.navigation A,
+.navigation A:visited,
+.navigation A:hover  { color: white; font-size: 25pt;  }
+.navigation LI       { display: inline; padding: 1px 17px 0 19px; font-family: arial;}
 
 .siteName            { float: left; padding-bottom: 15px; }
 .loginWidget         { float: right; padding-top: 10px;}
@@ -42,8 +51,20 @@ IFRAME.ad            { margin-left: 58px;}
 .loginHeader .password { font-size: 14pt; }
 .loginHeader .logIn    { width: 80px;}
 
+/* Show match screen */
 .showMatch .winnerName  { font-weight: bold; font-size: 40pt; color: green; }
 .showMatch .loserName   { font-weight: bold; font-size: 20pt; color: red; }
 .showMatch .winnerScore { color: green; font-size: 25px; }
 .showMatch .loserScore  { color: red; font-size: 25px; }
 .showMatch .defeatedSynonym { font-size: 32px; }
+
+/* Top Ten Rankings */
+.topTenRankings TD      { padding-left: 15px;    }
+.topTenRankings TD,
+.topTenRankings TH      { padding-bottom: 5px;   }
+
+/* Match List */
+.matchList TH,
+.matchList TD           { padding-right: 25px; } 
+.matchList TD,
+.matchList TH           { padding-bottom: 5px;   }

@@ -1,11 +1,19 @@
 <div class="topTenRankings">
-	<h2>Top Ten Rankings</h2>
+	<h2>Top Ranked Players</h2>
+
 	<table>
-		<% for user in top_ten_users %>
+		<tr>
+			<th>Login</th>
+			<th>W/L</th>
+			<th>Rating</th>
+		</tr>
+		<% for user in User.find(:all, :order => 'rating desc') do %>
 			<tr>
 				<td><%= user.login %></td>
-				<td><%= user.rating%></td>
+				<td><%= user.wins%> - <%= user.losses %></td>
+				<td><%= user.rating %></td>
 			</tr>
 		<% end %>
 	</table>
+
 </div>
