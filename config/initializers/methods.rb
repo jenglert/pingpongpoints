@@ -25,10 +25,6 @@ String.class_eval {
 # Returns the pretty version of the date
 Time.class_eval {
   define_method :pretty do
-    if (self.getlocal.today?)
-      return self.getlocal.strftime("%I:%M %p")
-    else
-      return self.getlocal.strftime("%B %d, %Y")
-    end
+    return self.getlocal.strftime("%B %d, %Y %I:%M %p")
   end
 }

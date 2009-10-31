@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091025181026) do
+ActiveRecord::Schema.define(:version => 20091031220856) do
 
   create_table "matches", :force => true do |t|
     t.integer  "home"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20091025181026) do
     t.integer  "k"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating_change"
   end
 
   create_table "users", :force => true do |t|

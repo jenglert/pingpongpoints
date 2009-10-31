@@ -11,6 +11,12 @@
 			<th>
 				Score
 			</th>
+			<th>
+				Rating Change
+			</th>
+			<th>
+				Date
+			</th>
 		</tr>
 		<% for match in @matches do %>
 			<tr>
@@ -22,6 +28,12 @@
 				</td>
 				<td>
 					<%= match.winner.score %> - <%= match.loser.score %>
+				</td>
+				<td>
+					<%= match.rating_change %>
+				</td>
+				<td>
+					<%= match.created_at.pretty %>
 				</td>
 			</tr>
 		<% end %>

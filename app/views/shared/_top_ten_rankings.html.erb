@@ -3,17 +3,19 @@
 
 	<table>
 		<tr>
+			<th>&nbsp</th>
 			<th>Login</th>
 			<th>W/L</th>
 			<th>Rating</th>
 		</tr>
-		<% for user in User.find(:all, :order => 'rating desc') do %>
+		<% User.find(:all, :order => 'rating desc').each_with_index { |user, i|  %>
 			<tr>
+				<td><%= i + 1%>.</td>
 				<td><%= user.login %></td>
 				<td><%= user.wins%> - <%= user.losses %></td>
 				<td><%= user.rating %></td>
 			</tr>
-		<% end %>
+		<% } %>
 	</table>
 
 </div>
