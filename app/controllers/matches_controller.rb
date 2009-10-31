@@ -1,4 +1,7 @@
 class MatchesController < ApplicationController
+  
+  before_filter :login_required, :only => [:new, :create]
+  
   def new
     @match ||= Match.new(:home => current_user.id)
   end

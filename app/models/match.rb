@@ -1,18 +1,12 @@
 class Match < ActiveRecord::Base
   validates_presence_of :home, :away, :home_score, :away_score
-  
-  # This is the number of points that one player will need in order to have a "major victory" over the other player.
-  # A major victory will generate a larger swing in rating.
-  MAJOR_DEFEAT_MARGIN = 5
-  
+    
   # Major victory = 3 points
   # Victory = 2 points
   # Loss = 1 points
   # Major Loss = 0 points
-  MAJOR_VICTORY = 3
   VICTORY = 2
   LOSS = 1
-  MAJOR_LOSS = 0
   
   def winner
     winning_participant true
@@ -48,17 +42,17 @@ class Match < ActiveRecord::Base
   
   def lower_rated_participant_adj_score
     if lower_rated_participant.score > higher_rated_participant.score
-      return lower_rated_participant.score - higher_rated_participant.score > MAJOR_DEFEAT_MARGIN ? MAJOR_VICTORY: VICTORY      
+      return VICTORY      
     else 
-      return higher_rated_participant.score - lower_rated_participant.score > MAJOR_DEFEAT_MARGIN ? MAJOR_LOSS : LOSS
+      return LOSS
     end
   end
   
   def higher_rated_participant_adj_score
     if higher_rated_participant.score > lower_rated_participant.score
-      return higher_rated_participant.score - lower_rated_participant.score > MAJOR_DEFEAT_MARGIN ? MAJOR_VICTORY: VICTORY      
+      return VICTORY      
     else 
-      return lower_rated_participant.score - higher_rated_participant.score > MAJOR_DEFEAT_MARGIN ? MAJOR_LOSS : LOSS
+      return LOSS
     end
   end
   

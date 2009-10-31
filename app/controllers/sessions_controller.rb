@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default('/')
       flash[:notice] = "Logged in successfully"
     else
-      if u && u.errors
+      if self.current_user && self.current_user.errors
         flash[:error] = "Hi jim"
       else
         flash[:error] = "Wrong username and/or password"

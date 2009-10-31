@@ -65,6 +65,4 @@ IFRAME.ad            { margin-left: 58px;}
 
 /* Match List */
 .matchList TH,
-.matchList TD           { padding-right: 25px; } 
-.matchList TD,
-.matchList TH           { padding-bottom: 5px;   }
+.matchList TD           { padding-right: 25px; padding-bottom: 5px; text-align: center;} 
