@@ -1,12 +1,10 @@
 class Match < ActiveRecord::Base
   validates_presence_of :home, :away, :home_score, :away_score
     
-  # Major victory = 3 points
-  # Victory = 2 points
-  # Loss = 1 points
-  # Major Loss = 0 points
-  VICTORY = 2
-  LOSS = 1
+  # Victory = 1 points
+  # Loss = 0 points
+  VICTORY = 1
+  LOSS = 0
   
   def winner
     winning_participant true
