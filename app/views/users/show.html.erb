@@ -1,0 +1,33 @@
+<div class="viewUser">
+	<h2><%= @user.login %></h2>
+	<ul>
+		<li>Rating: <%= @user.rating %></li>
+		<li>Record: <%= @user.wins %> - <%= @user.losses %></li>
+		<li>Winning Percentage: <%= @user.winning_percentage %></li>
+	</ul>
+	
+	<h3>Matches</h3>
+	<ul class="matches">
+	<% for match in @matches do %>
+		<li><%= match.won?(@user.id) ? '<span class="beat">Beat' : '<span class="lost">Lost to' %> 
+		</span><%= match.other_participant(@user.id).login %> <%= match.participant (@user.id).score %> - <%= match.other_participant (@user.id).score %> </li>
+		
+	<% end %>
+	</ul>
+	
+	<h3>Chance to Win Chart</h3>
+	<table>
+		<tr>
+			<th>Opponent</th>
+			<th>Chance To Win</th>
+		</tr>
+		<% for opponent in other_users(@user).sort {|lhs, rhs| rhs.rating <=> lhs.rating } do %>
+			<tr>
+				<td><%= opponent.login %></td>
+				<td><%= "%2.0f" % (100 * EloSystem.calculate_higher_rated_players_chance_to_win(@user.rating - opponent.rating)) %>%</td>
+			</tr>
+		<% end %>
+	</table>
+		
+		
+</div>

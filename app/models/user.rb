@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   def losses
     Match.find(:all, :conditions => ['home = ? or away = ?', self.id, self.id]).reject { |m| m.winner.id == self.id }.length
   end
+  
+  def winning_percentage
+    ("%3.1f" % ((wins.to_f / (wins.to_f + losses.to_f)) * 100)) + '%'
+  end
 
   # Activates the user in the database.
   def activate

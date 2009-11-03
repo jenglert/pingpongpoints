@@ -9,7 +9,7 @@ BODY                 { background-color: #CCF;      }
 H1                   { color: #3B6; font-size: 40pt; }
 H2                   { color: #EE5; font-size: 30pt;}
 A, A:visited,
-A:hover, A:active    { text-decoration: none; outline: none; }
+A:hover, A:active    { outline: none; }
 .clearBoth           { clear: both; }
 
 /* Error Styling */
@@ -65,4 +65,12 @@ IFRAME.ad            { margin-left: 58px;}
 
 /* Match List */
 .matchList TH,
-.matchList TD           { padding-right: 25px; padding-bottom: 5px; text-align: center;} 
+.matchList TD           { padding-right: 25px; padding-bottom: 5px; text-align: center; } 
+
+/* view user page */
+.viewUser .beat         { color: green; }
+.viewUser .lost         { color: red; }
+.viewUser UL            { padding-left: 20px; }
+.viewUser UL.matches    { padding-left: 35px; }
+.viewUser H3            { padding-top: 25px; }
+.viewUser TABLE TD      { padding: 0px 5px 0px 5px; text-align: center; }

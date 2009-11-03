@@ -1,12 +1,8 @@
 class Match < ActiveRecord::Base
   validates_presence_of :home, :away, :home_score, :away_score
     
-  # Major victory = 3 points
-  # Victory = 2 points
-  # Loss = 1 points
-  # Major Loss = 0 points
-  VICTORY = 2
-  LOSS = 1
+  VICTORY = 1
+  LOSS = 0
   
   def winner
     winning_participant true
@@ -17,11 +13,35 @@ class Match < ActiveRecord::Base
   end
   
   def home_participant
-    User.find(self.home)
+    user = User.find(self.home)
+    user.score = participant_score user
+    user
   end
   
   def away_participant
-    User.find(self.away)
+    user = User.find(self.away)
+    user.score = participant_score user
+    user
+  end
+  
+  def other_participant(id)
+    if self.away == id
+      home_participant
+    else
+      away_participant
+    end
+  end
+  
+  def participant (id)
+    if self.away != id
+      home_participant
+    else
+      away_participant
+    end
+  end
+  
+  def won? (id)
+    winner.id == id
   end
   
   def lower_rated_participant

@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
   end
+  
+  def show
+    @user = User.find(params[:id])
+    @matches = Match.find(:all, :conditions => ['home = ? or away =?', @user.id, @user.id])
+  end
 
   def create
     cookies.delete :auth_token

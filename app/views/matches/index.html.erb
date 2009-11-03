@@ -21,10 +21,10 @@
 		<% for match in @matches do %>
 			<tr>
 				<td>
-					<%= match.winner.login%>
+					<%= link_to match.winner.login, match.winner %>
 				</td>
 				<td>
-					<%= match.loser.login%>
+					<%= link_to match.loser.login, match.loser %>
 				</td>
 				<td>
 					<nobr><%= match.winner.score %> - <%= match.loser.score %></nobr>
