@@ -19,7 +19,7 @@ module EloSystem
   
   def calculate_rankings(match)
     
-    chance_higher_rated_player_will_win = calculate_higher_rated_players_chance_to_win match.rating_difference
+    chance_higher_rated_player_will_win = calculate_chance_to_win match.rating_difference
     
     margin_of_victory_mulitiplier = 1.0
     
@@ -37,8 +37,8 @@ module EloSystem
   end
   
   # Calculates the % chance that the higher rated player will win based on the rating difference.
-  def calculate_higher_rated_players_chance_to_win(rating_difference)
-    1 - 1/(E ** (rating_difference.abs/200.0) + 1)
+  def calculate_chance_to_win(rating_difference)
+    1 - 1/(E ** (rating_difference/200.0) + 1)
   end
   
 end

@@ -24,7 +24,7 @@
 		<% for opponent in other_users(@user).sort {|lhs, rhs| rhs.rating <=> lhs.rating } do %>
 			<tr>
 				<td><%= opponent.login %></td>
-				<td><%= "%2.0f" % (100 * EloSystem.calculate_higher_rated_players_chance_to_win(@user.rating - opponent.rating)) %>%</td>
+				<td><%= "%2.0f" % (100 * EloSystem.calculate_chance_to_win(@user.rating - opponent.rating)) %>%</td>
 			</tr>
 		<% end %>
 	</table>
