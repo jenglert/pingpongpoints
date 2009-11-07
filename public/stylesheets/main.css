@@ -11,6 +11,7 @@ H2                   { color: #EE5; font-size: 30pt;}
 A, A:visited,
 A:hover, A:active    { outline: none; }
 .clearBoth           { clear: both; }
+.relative            { position: relative; }
 
 /* Error Styling */
 .errorExplanation    { border: 4px red solid; background-color: #F66; margin: 0px 25px; padding: 5px 0 0 10px;}
@@ -31,12 +32,14 @@ A:hover, A:active    { outline: none; }
 .navigation A:hover  { color: white; font-size: 25pt;  }
 .navigation UL       { text-align: center; padding-top: 2px; }
 .navigation LI       { display: inline; padding: 1px 17px 0 19px; font-family: arial;}
+.tagLine             { color: indigo; font-size:16px; position: absolute; left: 162px; top: 95px;}
 
 .siteName            { float: left; padding-left: 18px;}
 .loginWidget         { float: right; padding-top: 15px;}
 .loginWidget INPUT   { width: 60px;}
-.welcomeText         { float: right; padding-top: 10px; font-size: 19px; font-weight: bold;}
-IFRAME.ad            { margin-left: 58px;}
+.welcomeText         { float: right; padding-top: 35px; font-size: 19px; font-weight: bold;}
+IFRAME.ad            { margin-left: 58px; }
+.copyright           { font-size: 10px; position: absolute; top: -8px; left: 675px;}
 
 /* Flash Error Messages */
 .flashes             { padding: 0px 5px 0px 5px; margin: 5px; border: 1px solid blue; width: 600px;}
@@ -99,3 +102,7 @@ IFRAME.ad            { margin-left: 58px;}
 
 /* Twitter */
 .twitter .content       { padding-left: 10px; padding-top: 5px; }
+
+/* Signup */
+.signup TD              { padding-bottom: 5px; }
+.signup .submit         { margin-left: 458px; }

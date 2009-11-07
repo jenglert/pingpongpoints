@@ -12,6 +12,7 @@
 		<div class="layoutContent">
 			<div class="headerContent">
 			<h1 class="siteName">Ping Pong Points</h1>
+			<div class="tagline">The Ultimate Ping Pong Player Rating System</div>
 			<% if !logged_in?%>
 				<span class="loginHeader">
 					<% form_tag session_path, :class => 'loginWidget' do -%>
@@ -28,12 +29,6 @@
 				<span class="welcomeText">Welcome <%= current_user.login%></span>
 			<% end%>
 			<div class="clearBoth"></div>
-			<% if flash[:notice] or flash[:error] %>
-				<div class="flashes">
-					<span class="notice"><%= flash[:notice] %></span>
-					<span class="error"><%= flash[:error] %></span>
-				</div>
-			<% end%>
 			</div>
 			<div class="navigation">
 				<ul>
@@ -42,6 +37,12 @@
 					<li><%= link_to 'Match List', :controller => 'matches', :action => 'index' %></li>
 					<li><%= link_to 'Signup', '/signup' %></li>
 			</div>
+			<% if flash[:notice] or flash[:error] %>
+				<div class="flashes">
+					<span class="notice"><%= flash[:notice] %></span>
+					<span class="error"><%= flash[:error] %></span>
+				</div>
+			<% end%>
 			<div class="bodyContent">
 				<%= yield%>
 			</div>
@@ -54,7 +55,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="contentBottom" ></div>
+		<div class="contentBottom relative" >
+			<div class="copyright">2009 &copy; Jim Englert</div>
+		</div>
 	</div>
 	<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>
 	
