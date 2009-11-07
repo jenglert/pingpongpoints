@@ -11,7 +11,7 @@ class MatchesController < ApplicationController
   end
   
   def index
-    @matches = Match.find(:all, :order => "created_at desc")
+    @matches = Match.paginate(:page => params[:page], :per_page => 15, :order => "created_at desc")
   end
   
   def create

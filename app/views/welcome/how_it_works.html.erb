@@ -1,0 +1,98 @@
+<div class="howItWorks">
+	<h2>How We Calculate Rankings</h2>
+	<div class="content">
+		<strong>PingPongPoints.com</strong> strives to provide <strong>the most accurate player ranking system possible</strong>.  The following document not only describes the exact mechanisms employed to provide such accurate ratings, but also highlights potential areas for improvement in the future.
+	</div>
+	<h3>Origins</h3>
+	<div class="content">
+		<strong>PingPongPoints.com</strong> borrows heavily from the <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo chess ranking system</a>.  This system was <strong>Arpad Elo</strong> in the early 1900's.  His system, and variations of his system, are still used today to rank professional chess players.  The Elo system, as well as the PingPongPoints.com system, rank players.  Players start with a a ranking of 1500.  As they win and lose matches, the loser will "give" points to the winner.  Roughly, A difference of <strong>200 points</strong> indicates that the player with more points will win <strong>75%</strong> of the time.
+	</div>
+	<h3>Algorithm</h3>
+	<div class="content">
+		The <strong>first step</strong> to the algorithm is determining the chance a player will win.  The easiest way to do this is to calculate the chance the lower rated player will win. The chance the higher rated player will win is then one minus that value.
+		
+		<br />
+		<br />
+		Chance Lower Rated Player Will Win: 1/(<em>e</em>^(<em>rating_difference</em>/200) + 1)
+		<br />
+		<div class="whereBlock">
+			where <em>e</em> is the natural number(2.71....)
+			<br />
+			and <em>rating_difference</em> is the higher rating minus the lower rating
+		</div>
+		<br />
+		The <strong>second step</strong> is to determine the amount of points that will change hands based on the winner. The following formula determines the point swing:
+		<br />
+		<br />
+		<em>margin_of_victory_mulitiplier</em> * <em>K</em> * (<em>did_higher_rated_player_win</em> - <em>chance_higher_rated_player_will_win</em>)
+		<br />
+		<div class="whereBlock">
+			where <em>margin_of_victory_multiplier</em> ensures that major victories are worth 150% as much as minor victories<br />
+			<em>K</em> is the maximum number of points that you can receive from a victory. This is currently 64 points. <br />
+			<em>did_higher_rated_player_win</em> is 1 if the higher player won, 0 if they lost.<br />
+			<em>chance_higher_rated_player_will_win</em> is calculated above
+		</div>
+		<br />
+		<strong>That's basically it.</strong>  The winner will be stealing those points from the losing player.
+	</div>
+	<h3>Examples</h3>
+	<div class="content">
+		<div class="example">
+			<strong>Example #1:</strong> Suppose <em>William the Heavy</em> is ranked 2000.  Also, <em>Ricky the Washed Out</em> is ranked 400.  We can calculate the chance that <em>Ricky the Washed Out</em> will win.  The formula we use is 1/(e^(1600/200) + 1).  That means that <em>Ricky the Washed Out</em> has basically a 0% chance of winning.  If <em>Ricky the Washed Out</em> some how wins by 2 points, he will get K * 1 points.  we set K to 64 so he will get 64 points.  If <em>Ricky the Washed Out</em> had won by more than 5, he would have gotten 150% of the points; he would have gotten 96 points!
+		</div>
+		<div class="example">
+			<strong>Example #2:</strong> Suppose that <em>Bill to Bashful</em> is playing <em>Frank the Fat</em>.  Let's assume that <em>Bill the Bashful</em> has 220 more points than <em>Frank the Fat</em>.  The chance that <em>Frank the Fat</em> will win is 1/(e+1) which is equal to about 25%.  If <em>Bill the Bashful</em> will win, he will get K * (1 - 0.75) points.  He will get 16 points.
+		</div>
+	</div>
+	<h3>Example Point Swings</h3>
+	<div class="content">
+		The following table shows some points swings based on the rating difference between the two players.
+		<table>
+			<tr>
+				<th>Score<br />Difference</th>
+				<th>Higher Rated<br />Player Wins</th>
+				<th>Lower Rated<br />Player Wins</th>
+			</tr>
+			<tr>
+				<td>1000</td>
+				<td><%= EloSystem.calculate_rating_change(1, 1000, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 1000, false) %></td>
+			</tr>
+			<tr>
+				<td>500</td>
+				<td><%= EloSystem.calculate_rating_change(1, 500, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 500, false) %></td>
+			</tr>
+			<tr>
+				<td>300</td>
+				<td><%= EloSystem.calculate_rating_change(1, 300, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 300, false) %></td>
+			</tr>
+			<tr>
+				<td>200</td>
+				<td><%= EloSystem.calculate_rating_change(1, 200, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 200, false) %></td>
+			</tr>
+			<tr>
+				<td>100</td>
+				<td><%= EloSystem.calculate_rating_change(1, 100, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 100, false) %></td>
+			</tr>
+			<tr>
+				<td>50</td>
+				<td><%= EloSystem.calculate_rating_change(1, 50, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 50, false) %></td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><%= EloSystem.calculate_rating_change(1, 10, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 10, false) %></td>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td><%= EloSystem.calculate_rating_change(1, 0, false) %></td>
+				<td><%= EloSystem.calculate_rating_change(0, 0, false) %></td>
+			</tr>
+		</table>
+	</div>
+</div>

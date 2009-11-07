@@ -19,25 +19,27 @@ A:hover, A:active    { outline: none; }
 /* General Layout */
 .contentContainer    { margin: 20px;}
 .contentTop          { background: url("/images/background-top.png") #CCF 0% 0% no-repeat scroll;  
-                       height: 30px; width: 800px;  }
-.content             { background-color: #EEF; width: 800px; padding-bottom: 10px;                   }
-.content .innerContent { padding: 0px 30px 0 30px;                                                   }
+                       height: 25px; width: 800px;  }
+.layoutContent     { background-color: #EEF; width: 800px; padding-bottom: 10px;              }
+.layoutContent .headerContent { padding: 0px 30px 5px 0;        }
+.layoutContent .bodyContent { padding: 5px 30px 10px 30px;                                                   }
 .contentBottom       { background: url("/images/background-bottom.png") #CCF 0% 0% no-repeat scroll; 
                        height: 30px; width: 800px; }
 .navigation          { height: 45px; background-color: blue; }
 .navigation A,
 .navigation A:visited,
 .navigation A:hover  { color: white; font-size: 25pt;  }
+.navigation UL       { text-align: center; padding-top: 2px; }
 .navigation LI       { display: inline; padding: 1px 17px 0 19px; font-family: arial;}
 
-.siteName            { float: left; padding-bottom: 15px; }
-.loginWidget         { float: right; padding-top: 10px;}
+.siteName            { float: left; padding-left: 18px;}
+.loginWidget         { float: right; padding-top: 15px;}
 .loginWidget INPUT   { width: 60px;}
 .welcomeText         { float: right; padding-top: 10px; font-size: 19px; font-weight: bold;}
 IFRAME.ad            { margin-left: 58px;}
 
 /* Flash Error Messages */
-.flashes             { padding: 5px 5px 15px 5px; margin: 5px; border: 1px solid blue; width: 600px;}
+.flashes             { padding: 0px 5px 0px 5px; margin: 5px; border: 1px solid blue; width: 600px;}
 .flashes .error      { color: red; }
 
 .newMatch                 {}
@@ -47,9 +49,8 @@ IFRAME.ad            { margin-left: 58px;}
 .newMatch .scores INPUT   { width: 50px; }
 .newMatch .recordMatch    { font-size: 20pt; margin-left: 200px; margin-top: 20px;}
 
-.loginHeader .login    { font-size: 14pt; }
-.loginHeader .password { font-size: 14pt; }
-.loginHeader .logIn    { width: 80px;}
+.loginHeader .login    { font-size: 14pt; width: 80px; }
+.loginHeader .password { font-size: 14pt; width: 80px; }
 
 /* Show match screen */
 .showMatch .winnerName  { font-weight: bold; font-size: 40pt; color: green; }
@@ -67,10 +68,34 @@ IFRAME.ad            { margin-left: 58px;}
 .matchList TH,
 .matchList TD           { padding-right: 25px; padding-bottom: 5px; text-align: center; } 
 
-/* view user page */
+/* View user page */
 .viewUser .beat         { color: green; }
 .viewUser .lost         { color: red; }
 .viewUser UL            { padding-left: 20px; }
 .viewUser UL.matches    { padding-left: 35px; }
 .viewUser H3            { padding-top: 25px; }
 .viewUser TABLE TD      { padding: 0px 5px 0px 5px; text-align: center; }
+
+/* How It Works */
+.howItWorks H3          { color: #EE5; font-size: 25px; }
+.howItWorks .example    { padding: 5px 0 5px 0;}
+.howItWorks .content    { padding: 0 0 10px 15px; }
+.howItWorks TH          { padding: 0 10px 0 10px;}
+.howItWorks TH,
+.howItWorks TD          { text-align: center; }
+.howItWorks TABLE       { padding-top: 5px; }
+.howItWorks .whereBlock { padding: 5px 0 0 10px; font-size: 16px;}
+
+/* Source Code Page */
+.sourceCode .content    { padding: 5px 0 0 10px; }
+
+/* FAQ */
+.faq .question,
+.faq .answer            { padding-left: 10px; }
+.faq .question          { padding-bottom: 5px; }
+.faq .question SPAN     { color: red;   font-size: 28px; font-weight: bold; }
+.faq .answer SPAN       { color: green; font-size: 28px; font-weight: bold; }
+.faq .answer            { padding-bottom: 20px; }
+
+/* Twitter */
+.twitter .content       { padding-left: 10px; padding-top: 5px; }

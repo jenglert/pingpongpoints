@@ -9,8 +9,8 @@
 	<!--<iframe src="/welcome/banner" height="90" width="728" scrolling="no" class="ad"></iframe>-->
 	<div class="contentContainer">
 		<div class="contentTop" ></div>
-		<div class="content">
-			<div class="innerContent">
+		<div class="layoutContent">
+			<div class="headerContent">
 			<h1 class="siteName">Ping Pong Points</h1>
 			<% if !logged_in?%>
 				<span class="loginHeader">
@@ -42,8 +42,16 @@
 					<li><%= link_to 'Match List', :controller => 'matches', :action => 'index' %></li>
 					<li><%= link_to 'Signup', '/signup' %></li>
 			</div>
-			<div class="innerContent">
-			<%= yield%>
+			<div class="bodyContent">
+				<%= yield%>
+			</div>
+			<div class="navigation">
+				<ul>
+					<li><%= link_to 'How it Works', :controller => 'welcome', :action => 'how_it_works' %></li>
+					<li><%= link_to 'Source Code', :controller => 'welcome', :action => 'source_code' %></li>
+					<li><%= link_to 'Twitter', :controller => 'welcome', :action => 'twitter' %></li>
+					<li><%= link_to 'FAQ', :controller => 'welcome', :action => 'faq' %></li>
+				</ul>
 			</div>
 		</div>
 		<div class="contentBottom" ></div>
