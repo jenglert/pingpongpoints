@@ -102,6 +102,7 @@ IFRAME.ad            { margin-left: 58px; }
 
 /* Twitter */
 .twitter .content       { padding-left: 10px; padding-top: 5px; }
+.twitter .widget        { float: right; }
 
 /* Signup */
 .signup TD              { padding-bottom: 5px; }
