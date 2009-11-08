@@ -38,7 +38,7 @@ A:hover, A:active    { outline: none; }
 .loginWidget         { float: right; padding-top: 15px;}
 .loginWidget INPUT   { width: 60px;}
 .welcomeText         { float: right; padding-top: 35px; font-size: 19px; font-weight: bold;}
-IFRAME.ad            { margin-left: 58px; }
+.bottomAd            { margin-left: 58px; }
 .copyright           { font-size: 10px; position: absolute; top: -8px; left: 675px;}
 
 /* Flash Error Messages */
