@@ -1,8 +1,13 @@
 <div class="showMatch">
+	<h1>Match Report: <%= @match.home_participant.login %> vs <%= @match.away_participant.login %></h1>
 	On <%= @match.created_at.pretty %>, 
 	<span class="winnerName"><%= @match.winner.login %></span> 
 	<span class="defeatedSynonym"><%= defeated_synonym %></span>
 	<span class="loserName"><%= @match.loser.login %></span>.  
 	The final score was 
 	<span class="winnerScore"><%= @match.winner.score.to_s %></span> - <span class="loserScore"><%= @match.loser.score.to_s %></span>.
+	<div class="systemPredictions">
+		The system determined that <%= @match.higher_rated_participant.login %> had a <%= "%2.0f" % ( EloSystem.calculate_chance_to_win(@match.higher_rated_participant.rating - @match.lower_rated_participant.rating) * 100) %>% chance to win
+		
+	</div>
 </div>

@@ -35,7 +35,6 @@ module EloSystem
       margin_of_victory_mulitiplier = 1.5
     end
     
-    puts rating_difference
     chance_higher_rated_player_will_win = calculate_chance_to_win rating_difference
     
     (margin_of_victory_mulitiplier * K * (did_higher_rated_player_adj_score - chance_higher_rated_player_will_win)).round.abs

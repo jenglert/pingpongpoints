@@ -6,8 +6,8 @@ SELECT
                      { font-size: 20pt; }
 SELECT               { height: 44px; width: 500px;}
 BODY                 { background-color: #CCF;      }
-H1                   { color: #3B6; font-size: 40pt; }
-H2                   { color: #EE5; font-size: 30pt;}
+.siteName            { color: #3B6; font-size: 40pt; }
+H1                   { color: #459; font-size: 30pt; font-family: fantasy; margin-bottom: -15px; }
 A, A:visited,
 A:hover, A:active    { outline: none; }
 .clearBoth           { clear: both; }
@@ -21,7 +21,7 @@ A:hover, A:active    { outline: none; }
 .contentContainer    { margin: 20px;}
 .contentTop          { background: url("/images/background-top.png") #CCF 0% 0% no-repeat scroll;  
                        height: 25px; width: 800px;  }
-.layoutContent     { background-color: #EEF; width: 800px; padding-bottom: 10px;              }
+.layoutContent     { background-color: #EEF; width: 800px; padding-bottom: 10px; position: relative;      }
 .layoutContent .headerContent { padding: 0px 30px 5px 0;        }
 .layoutContent .bodyContent { padding: 5px 30px 10px 30px;                                                   }
 .contentBottom       { background: url("/images/background-bottom.png") #CCF 0% 0% no-repeat scroll; 
@@ -32,7 +32,7 @@ A:hover, A:active    { outline: none; }
 .navigation A:hover  { color: white; font-size: 25pt;  }
 .navigation UL       { text-align: center; padding-top: 2px; }
 .navigation LI       { display: inline; padding: 1px 17px 0 19px; font-family: arial;}
-.tagLine             { color: indigo; font-size:16px; position: absolute; left: 162px; top: 95px;}
+.tagLine             { color: indigo; font-size:16px; position: absolute; left: 162px; top: 49px;}
 
 .siteName            { float: left; padding-left: 18px;}
 .loginWidget         { float: right; padding-top: 15px;}

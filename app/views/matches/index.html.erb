@@ -1,5 +1,5 @@
 <div class="matchList">
-	<h2>Matches</h2>
+	<h1>Matches</h1>
 	<table>
 		<tr>
 			<th>
@@ -30,7 +30,7 @@
 					<nobr><%= match.winner.score %> - <%= match.loser.score %></nobr>
 				</td>
 				<td>
-					<%= match.rating_change %>
+					<%= link_to match.rating_change, match %>
 				</td>
 				<td>
 					<%= match.created_at.pretty %>

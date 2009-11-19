@@ -19,6 +19,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "twitter", :version => "0.7.0"
+  config.gem "will_paginate"
   
   config.action_mailer.smtp_settings = {
     :address        => 'mail.thepeoplesfeed.com',
