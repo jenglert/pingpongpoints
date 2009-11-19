@@ -28,7 +28,7 @@ module EloSystem
     match.update_attribute :rating_change, rating_change.abs
   end
   
-  def calculate_rating_change(did_higher_rated_player_adj_score, rating_difference, is_large_victory)
+  def calculate_rating_change(did_higher_rated_player_win, rating_difference, is_large_victory)
     margin_of_victory_mulitiplier = 1.0
     
     if is_large_victory
@@ -37,7 +37,7 @@ module EloSystem
     
     chance_higher_rated_player_will_win = calculate_chance_to_win rating_difference
     
-    (margin_of_victory_mulitiplier * K * (did_higher_rated_player_adj_score - chance_higher_rated_player_will_win)).round.abs
+    (margin_of_victory_mulitiplier * K * (did_higher_rated_player_win - chance_higher_rated_player_will_win)).round.abs
   end
   
   # Calculates the % chance that the higher rated player will win based on the rating difference.
