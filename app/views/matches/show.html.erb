@@ -6,8 +6,12 @@
 	<span class="loserName"><%= @match.loser.login %></span>.  
 	The final score was 
 	<span class="winnerScore"><%= @match.winner.score.to_s %></span> - <span class="loserScore"><%= @match.loser.score.to_s %></span>.
-	<div class="systemPredictions">
-		The system determined that <%= @match.higher_rated_participant.login %> had a <%= "%2.0f" % ( EloSystem.calculate_chance_to_win(@match.higher_rated_participant.rating - @match.lower_rated_participant.rating) * 100) %>% chance to win
-		
+	<div class="info">
+		<%= @match.winner.login %> took <span class="ratingChange"><%= @match.rating_change %></span> points for winning.
+		That brings the record for <%= @match.winner.login %> and <%= @match.loser.login %> to 
+		<span class="record">
+			<%= @match.winner.wins_versus(@match.loser)%>-<%= @match.winner.losses_versus(@match.loser)%>
+		</span>
+		.
 	</div>
 </div>

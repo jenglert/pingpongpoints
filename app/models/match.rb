@@ -82,7 +82,7 @@ class Match < ActiveRecord::Base
 private 
 
   def winning_participant(find_winner)
-    participant = User.find(find_winner ^ (self.home_score > self.away_score)? self.away : self.home )
+    participant = User.find(find_winner ^ (self.home_score > self.away_score) ? self.away : self.home )
     participant.score = participant_score participant
     participant
   end

@@ -61,6 +61,9 @@ A:hover, A:active    { outline: none; }
 .showMatch .winnerScore { color: green; font-size: 25px; }
 .showMatch .loserScore  { color: red; font-size: 25px; }
 .showMatch .defeatedSynonym { font-size: 32px; }
+.showMatch .info  { padding-top: 15px; }
+.showMatch .info .record { font-size: 32px; }
+.showMatch .info .ratingChange { font-size: 30px; }
 
 /* Top Ten Rankings */
 .topTenRankings TD      { padding-left: 15px;    }
