@@ -1,5 +1,8 @@
 class Match < ActiveRecord::Base
   validates_presence_of :home, :away, :home_score, :away_score
+  
+  named_scope :find_by_user, lambda { |*args| { :conditions => ['home = ? or away = ?', args.first, args.first] } }
+  named_scope :find_by_users, lambda { |*args| { :conditions => ['(home = ? and away = ?) or (home = ? and away = ?)', args.first, args.second, args.second, args.first] } }
     
   VICTORY = 1
   LOSS = 0

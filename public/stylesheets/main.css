@@ -7,7 +7,7 @@ SELECT
 SELECT               { height: 44px; width: 500px;}
 BODY                 { background-color: #CCF;      }
 .siteName            { color: #3B6; font-size: 40pt; }
-H1                   { color: #459; font-size: 30pt; font-family: fantasy; margin-bottom: -15px; }
+H1                   { color: #459; font-size: 30pt; font-family: fantasy; }
 A, A:visited,
 A:hover, A:active    { outline: none; }
 .clearBoth           { clear: both; }
@@ -75,9 +75,12 @@ A:hover, A:active    { outline: none; }
 .viewUser .beat         { color: green; }
 .viewUser .lost         { color: red; }
 .viewUser UL            { padding-left: 20px; }
-.viewUser UL.matches    { padding-left: 35px; }
-.viewUser H3            { padding-top: 25px; }
+.viewUser UL.matches    { padding-left: 35px; text-align: left; padding-right: 15px; }
+.viewUser TABLE TH,
 .viewUser TABLE TD      { padding: 0px 5px 0px 5px; text-align: center; }
+.viewUser .chanceToWin  { border-left: 3px solid #BBD;}
+.viewUser .matchesChanceToWinTable    { padding-top: 25px; }
+.viewUser .matchesChanceToWinTable TD { vertical-align: top; }
 
 /* How It Works */
 .howItWorks H3          { color: #EE5; font-size: 25px; }

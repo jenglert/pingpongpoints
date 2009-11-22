@@ -6,14 +6,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @matches = Match.find(:all, :conditions => ['home = ? or away =?', @user.id, @user.id])
-    prev_score = 1500
-    scores = @matches.collect { |x| prev_score = x.winner == @user ? prev_score + x.rating_change : prev_score - x.rating_change; prev_score}
-    scores = [1500] + scores
+    
     respond_to do |wants|
           wants.html {
             @graph = open_flash_chart_object( 600, 300, url_for( :action => 'show', :format => :json ) )
           }
           wants.json { 
+            prev_score = 1500
+            scores = @matches.collect { |x| prev_score = x.winner == @user ? prev_score + x.rating_change : prev_score - x.rating_change; prev_score}
+            scores = [1500] + scores
+            
             chart = OpenFlashChart.new( "Player Score" ) do |c|
               c << LineHollow.new( :values => scores, :text => 'Score', :max => 300 )
             end

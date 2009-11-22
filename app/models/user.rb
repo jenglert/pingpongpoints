@@ -18,15 +18,41 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :password, :password_confirmation
 
   def wins
-    Match.find(:all, :conditions => ['home = ? or away = ?', self.id, self.id]).reject { |m| m.winner.id != self.id }.length
+    Match.find_by_user(self.id).reject { |m| m.winner.id != self.id }.length
   end
   
   def losses
-    Match.find(:all, :conditions => ['home = ? or away = ?', self.id, self.id]).reject { |m| m.winner.id == self.id }.length
+    Match.find_by_user(self.id).reject { |m| m.winner.id == self.id }.length
   end
   
   def winning_percentage
     ("%3.1f" % ((wins.to_f / (wins.to_f + losses.to_f)) * 100)) + '%'
+  end
+  
+  def wins_versus(other_player)
+    matches = Match.find_by_users(self.id, other_player.id)
+    wins = 0
+    
+    for match in matches
+      wins = wins + 1 if match.winner == self
+    end 
+    
+     wins
+  end
+  
+  def matches_versus(other_player)
+    Match.find_by_users(self.id, other_player.id).length
+  end
+  
+  def losses_versus(other_player)
+    matches = Match.find_by_users(self.id, other_player.id)
+    losses = 0
+    
+    for match in matches
+      losses = losses + 1 if match.winner != self
+    end 
+    
+    losses
   end
 
   # Activates the user in the database.
