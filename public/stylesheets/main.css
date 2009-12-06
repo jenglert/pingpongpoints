@@ -10,6 +10,7 @@ BODY                 { background-color: #CCF;      }
 H1                   { color: #459; font-size: 30pt; font-family: fantasy; }
 A, A:visited,
 A:hover, A:active    { outline: none; }
+IMG                  { border-style: none; }
 .clearBoth           { clear: both; }
 .relative            { position: relative; }
 
@@ -66,9 +67,9 @@ A:hover, A:active    { outline: none; }
 .showMatch .info .ratingChange { font-size: 30px; }
 
 /* Top Ten Rankings */
-.topTenRankings TD      { padding-left: 15px;    }
-.topTenRankings TD,
-.topTenRankings TH      { padding-bottom: 5px;   }
+.topTenRankings TH, 
+.topTenRankings TD      { padding-left: 15px; padding-bottom: 5px; text-align: center;  }
+
 
 /* Match List */
 .matchList TH,
@@ -94,6 +95,7 @@ A:hover, A:active    { outline: none; }
 .howItWorks TD          { text-align: center; }
 .howItWorks TABLE       { padding-top: 5px; }
 .howItWorks .whereBlock { padding: 5px 0 0 10px; font-size: 16px;}
+.howItWorks UL          { padding-left: 25px; }
 
 /* Source Code Page */
 .sourceCode .content    { padding: 5px 0 0 10px; }

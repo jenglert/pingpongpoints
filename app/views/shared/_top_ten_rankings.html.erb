@@ -6,14 +6,31 @@
 			<th>&nbsp</th>
 			<th>Login</th>
 			<th>W/L</th>
+			<th>Winning <br /> Percentage</th>
 			<th>Rating</th>
+			<th>Winning <br />Streak</th>
+			<th>Awards</th>
 		</tr>
 		<% User.find(:all, :order => 'rating desc').each_with_index { |user, i|  %>
 			<tr>
 				<td><%= i + 1%>.</td>
 				<td><%= link_to user.login, user %></td>
 				<td><%= user.wins%> - <%= user.losses %></td>
+				<td><%= user.winning_percentage_string %></td>
 				<td><%= user.rating %></td>
+				<td><%= user.winning_streak %></td>
+				<td>
+					<% if user.winning_streak_award %>
+						<a href="/welcome/how_it_works#awards">
+							<img src="/images/star_green.png" title="Winning Streak Award - 25 points" />
+						</a>
+					<% end %>
+					<% if user.winning_percentage_award %>
+						<a href="/welcome/how_it_works#awards">
+							<img src="/images/star_blue.png" title="Winning Percentage Award - 25 points" />
+						</a>
+					<% end %>
+				</td>
 			</tr>
 		<% } %>
 	</table>

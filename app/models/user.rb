@@ -1,5 +1,6 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+  extend ActiveSupport::Memoizable 
   # Virtual attribute for the unencrypted password
   attr_accessor :password, :score
 
@@ -17,16 +18,83 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation
 
-  def wins
-    Match.find_by_user(self.id).reject { |m| m.winner.id != self.id }.length
+  def awards
+    awards = []
+    
+    awards << "Winning Percentage Award" if winning_percentage_award
+    awards << "Winning Streak Award" if winning_streak_award
+    
+    awards
   end
+
+  def winning_percentage_award
+    users = User.find(:all).sort{ |lhs,rhs| rhs.winning_percentage <=> lhs.winning_percentage }
+    top_winning_percentage = users.first.winning_percentage
+    
+    for user in users
+      if top_winning_percentage == user.winning_percentage
+        if user.id == self.id 
+          return true
+        end
+      else
+        return false
+      end
+    end
+  end
+  memoize :winning_percentage_award
+
+  def winning_streak_award
+    users = User.find(:all).sort { |lhs,rhs| rhs.winning_streak <=> lhs.winning_streak }
+    top_winning_streak = users.first.winning_streak
+    
+    for user in users
+      if top_winning_streak == user.winning_streak
+        if user.id == self.id
+          return true
+        end
+      else
+        return false
+      end
+    end
+  end
+  memoize :winning_streak_award
   
-  def losses
-    Match.find_by_user(self.id).reject { |m| m.winner.id == self.id }.length
+  def rating
+    rating = read_attribute(:rating)
+    
+    rating = rating + 25 if winning_percentage_award
+    rating = rating + 25 if winning_streak_award
+    rating
   end
+
+  def winning_streak
+    matches_ordered_backwards = Match.find_by_user(self.id).sort {
+      |lhs, rhs| rhs.created_at <=> lhs.created_at
+    }
+    
+    wins = 0
+    
+    for match in matches_ordered_backwards
+      if match.winner.id == self.id
+        wins = wins + 1
+      else
+        return wins
+      end
+    end
+    
+    wins
+  end
+  memoize :winning_streak
   
   def winning_percentage
-    ("%3.1f" % ((wins.to_f / (wins.to_f + losses.to_f)) * 100)) + '%'
+    winning_percentage = 0
+    winning_percentage = (self.wins.to_f / (self.wins.to_f + self.losses.to_f)) * 100 unless wins + losses == 0
+    winning_percentage
+  end
+  memoize :winning_percentage
+  
+  def winning_percentage_string
+    ("%3.1f" % self.winning_percentage) + '%'
   end
   
   def wins_versus(other_player)

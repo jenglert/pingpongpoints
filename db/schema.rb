@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091031220856) do
+ActiveRecord::Schema.define(:version => 20091206194138) do
 
   create_table "matches", :force => true do |t|
     t.integer  "home"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20091031220856) do
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
     t.integer  "rating",                                  :default => 1500
+    t.integer  "wins"
+    t.integer  "losses"
   end
 
 end
