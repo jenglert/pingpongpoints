@@ -23,9 +23,11 @@ class User < ActiveRecord::Base
     
     awards << "Winning Percentage Award" if winning_percentage_award
     awards << "Winning Streak Award" if winning_streak_award
+    awards << "Losing Streak Award" if losing_streak_award
     
     awards
   end
+  memoize :awards
 
   def winning_percentage_award
     users = User.find(:all).sort{ |lhs,rhs| rhs.winning_percentage <=> lhs.winning_percentage }
@@ -42,6 +44,22 @@ class User < ActiveRecord::Base
     end
   end
   memoize :winning_percentage_award
+
+  def losing_streak_award
+    users = User.find(:all).sort { |lhs,rhs| rhs.losing_streak <=> lhs.losing_streak }
+    top_losing_streak = users.first.losing_streak
+    
+    for user in users
+      if top_losing_streak == user.losing_streak
+        if user.id == self.id
+          return true
+        end
+      else
+        return false
+      end
+    end
+  end
+  memoize :losing_streak_award
 
   def winning_streak_award
     users = User.find(:all).sort { |lhs,rhs| rhs.winning_streak <=> lhs.winning_streak }
@@ -64,8 +82,28 @@ class User < ActiveRecord::Base
     
     rating = rating + 25 if winning_percentage_award
     rating = rating + 25 if winning_streak_award
+    rating = rating + 30 if losing_streak_award
     rating
   end
+
+  def losing_streak
+    matches_ordered_backwards = Match.find_by_user(self.id).sort {
+      |lhs, rhs| rhs.created_at <=> lhs.created_at
+    }
+    
+    loses = 0
+    
+    for match in matches_ordered_backwards
+      if match.loser.id == self.id
+        loses = loses + 1
+      else
+        return loses
+      end
+    end
+    
+    loses
+  end
+  memoize :losing_streak
 
   def winning_streak
     matches_ordered_backwards = Match.find_by_user(self.id).sort {

@@ -30,6 +30,12 @@
 							<img src="/images/star_blue.png" title="Winning Percentage Award - 25 points" />
 						</a>
 					<% end %>
+					
+					<% if user.losing_streak_award %>
+						<a href="/welcome/how_it_works#awards">
+							<img src="/images/star_yellow.png" title="Losing Streak Award - 30 points" />
+						</a>
+					<% end %>
 				</td>
 			</tr>
 		<% } %>
