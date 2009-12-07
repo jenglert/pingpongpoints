@@ -24,10 +24,19 @@ class User < ActiveRecord::Base
     awards << "Winning Percentage Award" if winning_percentage_award
     awards << "Winning Streak Award" if winning_streak_award
     awards << "Losing Streak Award" if losing_streak_award
+    awards << "Matches Played Award" if matches_played_award
     
     awards
   end
   memoize :awards
+
+  def matches_played_award
+    users = User.find(:all).sort{ |lhs, rhs| rhs.wins + rhs.losses <=> lhs.wins  + lhs.wins }
+    most_matches = users.first.wins + users.first.losses
+    
+    puts "most_matches:" + most_matches.to_s
+    self.wins + self.losses == most_matches    
+  end
 
   def winning_percentage_award
     users = User.find(:all).sort{ |lhs,rhs| rhs.winning_percentage <=> lhs.winning_percentage }
@@ -83,6 +92,7 @@ class User < ActiveRecord::Base
     rating = rating + 25 if winning_percentage_award
     rating = rating + 25 if winning_streak_award
     rating = rating + 30 if losing_streak_award
+    rating = rating + 25 if matches_played_award
     rating
   end
 

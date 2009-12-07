@@ -36,6 +36,12 @@
 							<img src="/images/star_yellow.png" title="Losing Streak Award - 30 points" />
 						</a>
 					<% end %>
+					
+					<% if user.matches_played_award %>
+						<a href="/welcome/how_it_works#awards">
+							<img src="/images/star_red.png" title="Most Matches Award - 25 points" />
+						</a>
+					<% end %>
 				</td>
 			</tr>
 		<% } %>
