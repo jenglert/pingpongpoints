@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @matches = Match.find_by_user_id(@user.id)
     
     respond_to do |wants|
           wants.html {
             @graph = open_flash_chart_object( 600, 300, url_for( :action => 'show', :format => :json ) )
           }
           wants.json { 
-            @matches = Match.find_by_user_id(@user.id)
             prev_score = 1500
             scores = @matches.collect { |x| prev_score = x.winner == @user ? prev_score + x.rating_change : prev_score - x.rating_change; prev_score}
             scores = [1500] + scores
