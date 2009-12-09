@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @matches = Match.find_by_user_id(@user.id)
+    @matches = Match.find_by_user(@user.id)
     
     respond_to do |wants|
           wants.html {
