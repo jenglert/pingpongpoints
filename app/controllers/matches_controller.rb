@@ -2,6 +2,9 @@ class MatchesController < ApplicationController
   
   before_filter :login_required, :only => [:new, :create]
   
+  caches_page :show
+  caches_page :index
+  
   def new
     @match ||= Match.new(:home => current_user.id)
   end
@@ -19,6 +22,10 @@ class MatchesController < ApplicationController
     
     if @match.save
       flash[:notice] = "Match added!"
+      
+      # Clear the caches
+      clear_caches :matches => @match.id, :users => [ @match.home, @match.away ]
+      
       redirect_to @match
     else
       render :action => 'new'

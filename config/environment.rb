@@ -47,6 +47,8 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
   
   config.active_record.observers = :user_observer, :match_observer
+  
+  config.action_controller.page_cache_directory = File.join("#{RAILS_ROOT}", "public")
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

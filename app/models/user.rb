@@ -31,58 +31,41 @@ class User < ActiveRecord::Base
   memoize :awards
 
   def matches_played_award
-    users = User.find(:all).sort{ |lhs, rhs| rhs.wins + rhs.losses <=> lhs.wins  + lhs.wins }
-    most_matches = users.first.wins + users.first.losses
+    most_matches = Rails.cache.fetch("most_matches") {
+      users = User.find(:all).sort{ |lhs, rhs| rhs.wins + rhs.losses <=> lhs.wins  + lhs.wins }
+      users.first.wins + users.first.losses
+    }
     
-    puts "most_matches:" + most_matches.to_s
     self.wins + self.losses == most_matches    
   end
 
   def winning_percentage_award
-    users = User.find(:all).sort{ |lhs,rhs| rhs.winning_percentage <=> lhs.winning_percentage }
-    top_winning_percentage = users.first.winning_percentage
+    top_winning_percentage = Rails.cache.fetch("top_winning_percentage") {
+      users = User.find(:all).sort{ |lhs,rhs| rhs.winning_percentage <=> lhs.winning_percentage }
+      top_winning_percentage = users.first.winning_percentage
+    }
     
-    for user in users
-      if top_winning_percentage == user.winning_percentage
-        if user.id == self.id 
-          return true
-        end
-      else
-        return false
-      end
-    end
+    top_winning_percentage == self.winning_percentage
   end
   memoize :winning_percentage_award
 
   def losing_streak_award
-    users = User.find(:all).sort { |lhs,rhs| rhs.losing_streak <=> lhs.losing_streak }
-    top_losing_streak = users.first.losing_streak
+    top_losing_streak = Rails.cache.fetch("top_losing_streak") {
+      users = User.find(:all).sort { |lhs,rhs| rhs.losing_streak <=> lhs.losing_streak }
+      users.first.losing_streak
+    }
     
-    for user in users
-      if top_losing_streak == user.losing_streak
-        if user.id == self.id
-          return true
-        end
-      else
-        return false
-      end
-    end
+    self.losing_streak == top_losing_streak
   end
   memoize :losing_streak_award
 
   def winning_streak_award
-    users = User.find(:all).sort { |lhs,rhs| rhs.winning_streak <=> lhs.winning_streak }
-    top_winning_streak = users.first.winning_streak
+    top_winning_streak = Rails.cache.fetch("top_winning_streak") {
+      users = User.find(:all).sort { |lhs,rhs| rhs.winning_streak <=> lhs.winning_streak }
+      users.first.winning_streak
+    }
     
-    for user in users
-      if top_winning_streak == user.winning_streak
-        if user.id == self.id
-          return true
-        end
-      else
-        return false
-      end
-    end
+    top_winning_streak == self.winning_streak
   end
   memoize :winning_streak_award
   
