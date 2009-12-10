@@ -2,11 +2,12 @@ class MatchesController < ApplicationController
   
   before_filter :login_required, :only => [:new, :create]
   
-  caches_page :show
-  caches_page :index
-  
   def new
     @match ||= Match.new(:home => current_user.id)
+  end
+  
+  def admin_match_create
+    @match ||= Match.new()
   end
   
   def show

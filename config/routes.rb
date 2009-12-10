@@ -49,8 +49,10 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  
+
+  map.connect '/matches/admin_match_create', :controller => 'matches', :action => 'admin_match_create'  
   map.resources :matches
+
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

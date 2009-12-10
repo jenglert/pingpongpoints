@@ -9,17 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091209043853) do
+ActiveRecord::Schema.define(:version => 20091210143302) do
 
   create_table "matches", :force => true do |t|
     t.integer  "home"
     t.integer  "away"
     t.integer  "home_score"
     t.integer  "away_score"
-    t.integer  "k"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating_change"
+    t.integer  "k",             :default => 64
   end
 
   create_table "users", :force => true do |t|
