@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
   
-  caches_page :new
-  caches_page :show, :if => Proc.new { |c| !c.request.format.json? }
-  
   # render new.rhtml
   def new
   end
