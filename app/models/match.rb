@@ -48,19 +48,19 @@ class Match < ActiveRecord::Base
   end
   
   def lower_rated_participant
-    user = User.find(away_participant.rating < home_participant.rating ? away_participant : home_participant)
+    user = User.find(away_participant.rating_sans_awards < home_participant.rating_sans_awards ? away_participant : home_participant)
     user.score = participant_score user
     user
   end
   
   def higher_rated_participant
-    user = User.find(away_participant.rating >= home_participant.rating ? away_participant : home_participant)
+    user = User.find(away_participant.rating_sans_awards >= home_participant.rating_sans_awards ? away_participant : home_participant)
     user.score = participant_score user
     user
   end
   
   def rating_difference
-    higher_rated_participant.rating - lower_rated_participant.rating
+    higher_rated_participant.rating_sans_awards - lower_rated_participant.rating_sans_awards
   end
   
   def lower_rated_participant_adj_score

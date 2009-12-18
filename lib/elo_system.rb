@@ -18,8 +18,8 @@ module EloSystem
     
     rating_change = calculate_rating_change(match.higher_rated_participant_adj_score,match.rating_difference, match.winner.score - match.loser.score > MAJOR_DEFEAT_MARGIN, match.k)
     
-    match.winner.update_attribute :rating, match.winner.rating + rating_change
-    match.loser.update_attribute :rating, match.loser.rating - rating_change
+    match.winner.update_attribute :rating, match.winner.rating_sans_awards + rating_change
+    match.loser.update_attribute :rating, match.loser.rating_sans_awards - rating_change
     
     # Return the number of points that each player's rating will change by potentially.
     match.update_attribute :rating_change, rating_change.abs

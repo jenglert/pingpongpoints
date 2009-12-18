@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
   end
   memoize :winning_streak_award
   
+  def rating_sans_awards
+    read_attribute(:rating)
+  end
+  
   def rating
     rating = read_attribute(:rating)
     

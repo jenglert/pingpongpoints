@@ -11,7 +11,7 @@
 			<th>Winning <br />Streak</th>
 			<th>Awards</th>
 		</tr>
-		<% User.find(:all, :order => 'rating desc').each_with_index { |user, i|  %>
+		<% User.find(:all).sort{ |lhs, rhs| rhs.rating <=> lhs.rating }.each_with_index { |user, i|  %>
 			<tr>
 				<td><%= i + 1%>.</td>
 				<td><%= link_to user.login, user %></td>
