@@ -14,7 +14,8 @@ test:
   username: root    
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql
+  enconding: utf8
+  database: pingpongprating
+  username: root
+  password: zepher
